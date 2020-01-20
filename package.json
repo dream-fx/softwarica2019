@@ -1,0 +1,27 @@
+{
+  "name": "travelers-home-backend",
+  "version": "1.0.0",
+  "description": "API made for the web and android client use.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nischalshk/Travelers-home-backend.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "js",
+    "react",
+    "android",
+    "mongoose"
+  ],
+  "author": "Nischal Shakya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nischalshk/Travelers-home-backend/issues"
+  },
+  "homepage": "https://github.com/nischalshk/Travelers-home-backend#readme"
+}
