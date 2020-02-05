@@ -38,8 +38,8 @@ const homeSchema = new mongoose.Schema({
   homeCreatedAt: {
     type: Date
   },
-  
-  hostName:{
+
+  author:{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Host"
 }

@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.route("/").post((req, res, next) => {
   let home = new Home(req.body);
-  home.hostName = req.home._id;
+  home.author = req.host._id;
   console.log(home);
   home
     .save()
