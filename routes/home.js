@@ -29,7 +29,8 @@ router
   });
 
 router.route("/:homeName").get((req, res, next) => {
-  Home.find({ homeName: req.params.homeName })
+  //here may be a problem
+  Home.find({ author: req.params.homeName })
     .then(homes => {
       console.log(homes);
       res.json(homes);
