@@ -29,4 +29,17 @@ router
   });
 
 
+
+router.route("/:homeName").get((req, res, next) => {
+    Home.find({ homeName: req.params.homeName })
+      .then(homes => {
+        console.log(homes);
+        res.json(homes);
+      })
+      .catch(err => {
+        next(err);
+      });
+  });
+  
+  
 module.exports = router;
