@@ -42,4 +42,20 @@ router.route("/:homeName").get((req, res, next) => {
   });
   
   
+  router
+    .route("/:id")
+    .put((req, res, next) => {
+      console.log(req.body);
+      Home.findOneAndUpdate(
+        { author: req.host._id, _id: req.params.id },
+        { $set: req.body },
+        { new: true }
+      )
+        .then(reply => {
+          if (reply == null) throw new Error("Home not found");
+          res.json(reply);
+        })
+        .catch(next);
+    })
+ 
 module.exports = router;
