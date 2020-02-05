@@ -58,6 +58,13 @@ router.route("/:id").get((req, res, next) => {
       .catch(next);
   })
 
- 
+  .delete((req, res, next) => {
+    Booking.findOneAndDelete({ author: req.guest._id, _id: req.params.id })
+      .then(home => {
+        if (home == null) throw new Error("Booking not found");
+        res.json(home);
+      })
+      .catch(next);
+  });
 
 module.exports = router;
