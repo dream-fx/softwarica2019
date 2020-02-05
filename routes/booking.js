@@ -44,6 +44,20 @@ router.route("/:id").get((req, res, next) => {
       res.json({ message: "Method not allowed" });
   })
   
-   
+  .put((req, res, next) => {
+    console.log(req.body);
+    Booking.findOneAndUpdate(
+      { authorG: req.guest._id, _id: req.params.id },
+      { $set: req.body },
+      { new: true }
+    )
+      .then(reply => {
+        if (reply == null) throw new Error("Booking not found");
+        res.json(reply);
+      })
+      .catch(next);
+  })
+
+ 
 
 module.exports = router;
