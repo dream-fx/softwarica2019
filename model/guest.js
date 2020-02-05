@@ -29,11 +29,6 @@ const guestSchema = new mongoose.Schema({
   },
   guestCreatedAt: {
     type: Date
-  },
-
-  admin: {
-    type: Boolean,
-    default: false
   }
 });
 
