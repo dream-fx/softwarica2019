@@ -58,4 +58,14 @@ router.route("/:homeName").get((req, res, next) => {
         .catch(next);
     })
  
+
+    .delete((req, res, next) => {
+        Home.findOneAndDelete({ author: req.host._id, _id: req.params.id })
+          .then(home => {
+            if (home == null) throw new Error("Home not found");
+            res.json(home);
+          })
+          .catch(next);
+      });
+  
 module.exports = router;
