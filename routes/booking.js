@@ -29,4 +29,21 @@ router
   });
 
 
+router.route("/:id").get((req, res, next) => {
+    Booking.findOne({ author: req.guest._id, _id: req.params.id })
+      .then(booking => {
+          if (task == null) throw new Error("Booking not found!")
+        res.json(booking);
+      })
+      .catch(err => {
+        next(err);
+      });
+  })
+  .post((req, res) => {
+      res.statusCode = 405;
+      res.json({ message: "Method not allowed" });
+  })
+  
+   
+
 module.exports = router;
