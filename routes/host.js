@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Host = require("../model/host");
 const router = express.Router();
-const auth = require("../auth");
+const auth = require("../middleware/auth");
 
 router.post("/hsignup", (req, res, next) => {
   let hostPassword = req.body.hostPassword;

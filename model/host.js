@@ -32,9 +32,6 @@ const hostSchema = new mongoose.Schema({
   },
   hostDob: {
     type: Date
-  },
-  hostCreatedAt: {
-    type: Date
   }
 });
 

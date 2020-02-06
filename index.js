@@ -1,13 +1,10 @@
 const express = require("express");
-//const bodyParser = require("body-parser");
-//const path = require("path");
 const cors = require("cors");
-//const multer = require("multer");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const dotenv = require("dotenv").config();
 
-//require("./dbconfig/db");
+
 const Guest = require("./routes/guest");
 const Host = require("./routes/host");
 const Home = require("./routes/home");
@@ -39,8 +36,9 @@ mongoose
 app.use("/guest", Guest);
 app.use("/upload", Upload);
 app.use(auth.verifyGuest);
-// app.use("/host", Host);
-// app.use("/home", Home);
+app.use(auth.verifyHost);
+app.use("/host", Host);
+app.use("/home", Home);
 // app.use("/booking", Booking);
 
 app.use((err, req, res, next) => {

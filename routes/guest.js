@@ -18,8 +18,8 @@ router.post("/signup", (req, res, next) => {
       guestImage: req.body.guestImage,
       guestBio: req.body.guestBio,
       guestGender: req.body.guestGender,
-      guestDob: req.body.guestDob,
-      guestCreatedAt: req.body.guestCreatedAt
+      guestDob: req.body.guestDob
+      // guestCreatedAt: req.body.guestCreatedAt
     })
       .then(guest => {
         let token = jwt.sign({ _id: guest._id }, process.env.SECRET);

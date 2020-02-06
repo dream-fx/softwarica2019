@@ -15,6 +15,10 @@ const guestSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+
+  guestEmail: {
+    type: String
+  },
   guestImage: {
     type: String
   },
@@ -25,9 +29,6 @@ const guestSchema = new mongoose.Schema({
     type: String
   },
   guestDob: {
-    type: Date
-  },
-  guestCreatedAt: {
     type: Date
   }
 });
