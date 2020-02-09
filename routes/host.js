@@ -5,7 +5,8 @@ const Host = require("../model/host");
 const router = express.Router();
 const auth = require("../middleware/auth");
 
-router.post("/hsignup", (req, res, next) => {
+router.post("/signup", (req, res, next) => {
+  console.log(req.body);
   let hostPassword = req.body.hostPassword;
   bcrypt.hash(hostPassword, 10, function(err, hash) {
     if (err) {
@@ -24,6 +25,7 @@ router.post("/hsignup", (req, res, next) => {
       hostCreatedAt: req.body.hostCreatedAt
     })
       .then(host => {
+        console.log(host);
         let token = jwt.sign({ _id: host._id }, process.env.SECRET);
         res.json({ status: "Signup success!", token: token });
       })
@@ -31,7 +33,7 @@ router.post("/hsignup", (req, res, next) => {
   });
 });
 
-router.post("/hlogin", (req, res, next) => {
+router.post("/login", (req, res, next) => {
   Host.findOne({ hostUsername: req.body.hostUsername })
     .then(host => {
       if (host == null) {
@@ -56,7 +58,7 @@ router.post("/hlogin", (req, res, next) => {
     .catch(next);
 });
 
-router.get("/hprofile", auth.verifyHost, (req, res, next) => {
+router.get("/profile", auth.verifyHost, (req, res, next) => {
   res.json({
     _id: req.host._id,
     hostName: req.host.hostName,
@@ -71,7 +73,7 @@ router.get("/hprofile", auth.verifyHost, (req, res, next) => {
   });
 });
 
-router.put("/hprofileup", auth.verifyHost, (req, res, next) => {
+router.put("/updateprofile", auth.verifyHost, (req, res, next) => {
   Host.findByIdAndUpdate(req.host._id, { $set: req.body }, { new: true })
     .then(host => {
       res.json({

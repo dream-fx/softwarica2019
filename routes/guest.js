@@ -63,7 +63,7 @@ router.get("/profile", auth.verifyGuest, (req, res, next) => {
   });
 });
 
-router.put("/updatepro", auth.verifyGuest, (req, res, next) => {
+router.put("/updateprofile", auth.verifyGuest, (req, res, next) => {
   Guest.findByIdAndUpdate(req.guest._id, { $set: req.body }, { new: true })
     .then(guest => {
       res.json({

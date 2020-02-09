@@ -4,6 +4,7 @@ const Host = require("../model/host");
 
 module.exports.verifyGuest = (req, res, next) => {
   let authHeader = req.headers.authorization;
+  console.log(req.headers);
   if (!authHeader) {
     let err = new Error("Bearer token is not set!");
     err.status = 401;
@@ -24,6 +25,7 @@ module.exports.verifyGuest = (req, res, next) => {
 
 module.exports.verifyHost = (req, res, next) => {
   let authHeader = req.headers.authorization;
+  console.log(req.headers);
   if (!authHeader) {
     let err = new Error("Bearer token is not set!");
     err.status = 401;

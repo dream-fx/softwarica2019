@@ -18,6 +18,7 @@ const homeSchema = new mongoose.Schema({
   },
   homePrice: {
     type: Number
+    
   },
   homeLocation: {
     type: String

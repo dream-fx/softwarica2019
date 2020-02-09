@@ -4,11 +4,10 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const dotenv = require("dotenv").config();
 
-
-const Guest = require("./routes/guest");
-const Host = require("./routes/host");
-const Home = require("./routes/home");
-const Booking = require("./routes/booking");
+const GuestRouter = require("./routes/guest");
+const HostRouter = require("./routes/host");
+const HomeRouter = require("./routes/home");
+const BookingRouter = require("./routes/booking");
 const auth = require("./middleware/auth");
 const Upload = require("./routes/upload");
 
@@ -33,12 +32,13 @@ mongoose
     err => console.log(err)
   );
 
-app.use("/guest", Guest);
+app.use("/guest", GuestRouter);
 app.use("/upload", Upload);
-app.use(auth.verifyGuest);
-app.use(auth.verifyHost);
-app.use("/host", Host);
-app.use("/home", Home);
+app.use("/host", HostRouter);
+
+//app.use(auth.verifyGuest);
+//app.use(auth.verifyHost);
+app.use("/home", auth.verifyHost,HomeRouter);
 // app.use("/booking", Booking);
 
 app.use((err, req, res, next) => {
