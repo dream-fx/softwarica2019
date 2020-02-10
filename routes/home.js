@@ -3,7 +3,7 @@ const Home = require("../model/home");
 const router = express.Router();
 
 router
-  .route("/addhome")
+  .route("/")
 
   .post((req, res, next) => {
     let home = new Home(req.body);
