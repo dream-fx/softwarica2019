@@ -15,10 +15,10 @@ router.post("/signup", (req, res, next) => {
       guestName: req.body.guestName,
       guestUsername: req.body.guestUsername,
       guestPassword: hash,
-      guestImage: req.body.guestImage,
-      guestBio: req.body.guestBio,
-      guestGender: req.body.guestGender,
-      guestDob: req.body.guestDob
+      guestImage: req.body.guestImage
+      // guestBio: req.body.guestBio,
+      // guestGender: req.body.guestGender,
+      // guestDob: req.body.guestDob
       // guestCreatedAt: req.body.guestCreatedAt
     })
       .then(guest => {
@@ -54,7 +54,7 @@ router.post("/login", (req, res, next) => {
     .catch(next);
 });
 
-router.get("/profile", auth.verifyGuest, (req, res, next) => {
+router.get("/", auth.verifyGuest, (req, res, next) => {
   res.json({
     _id: req.guest._id,
     guestName: req.guest.guestName,
@@ -63,7 +63,7 @@ router.get("/profile", auth.verifyGuest, (req, res, next) => {
   });
 });
 
-router.put("/updateprofile", auth.verifyGuest, (req, res, next) => {
+router.put("/", auth.verifyGuest, (req, res, next) => {
   Guest.findByIdAndUpdate(req.guest._id, { $set: req.body }, { new: true })
     .then(guest => {
       res.json({
@@ -71,7 +71,7 @@ router.put("/updateprofile", auth.verifyGuest, (req, res, next) => {
         guestName: req.guest.guestName,
         guestUsername: req.guest.guestUsername,
         guestImage: guest.guestImage,
-        guestBio: guest.guestBio
+       
       });
     })
     .catch(next);

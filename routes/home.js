@@ -20,7 +20,8 @@ router
   .get((req, res, next) => {
     Home.find({ author: req.host._id })
       .then(homes => {
-        console.log(homes);
+        res.statusCode = 200;
+        res.setHeader("Content-Type", "application/json");
         res.json(homes);
       })
       .catch(err => {

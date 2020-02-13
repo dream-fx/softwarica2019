@@ -1,13 +1,7 @@
 const mongoose = require("mongoose");
 
 const bookingschema = new mongoose.Schema({
-  username: {
-    type: String
-  },
   homeName: {
-    type: String
-  },
-  hostName: {
     type: String
   },
   bookIn: {
@@ -22,14 +16,8 @@ const bookingschema = new mongoose.Schema({
   bookPrice: {
     type: Number
   },
-  bookTotal: {
-    type: Number
-  },
   bookStatus: {
     type: Boolean
-  },
-  bookCreatedAt: {
-    type: Date
   },
   authorG: {
     type: mongoose.Schema.Types.ObjectId,

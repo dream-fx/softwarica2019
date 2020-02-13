@@ -27,20 +27,16 @@ const homeSchema = new mongoose.Schema({
     type: Number
   },
   homeLat: {
-    type: Number
+    type: String
   },
   homeLong: {
-    type: Number
+    type: String
   },
   homeAvail: {
     type: Boolean
   },
 
-  homeCreatedAt: {
-    type: Date
-  },
-
-  author:{
+   author:{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Host"
 }

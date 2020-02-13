@@ -58,7 +58,7 @@ router.post("/login", (req, res, next) => {
     .catch(next);
 });
 
-router.get("/profile", auth.verifyHost, (req, res, next) => {
+router.get("/", auth.verifyHost, (req, res, next) => {
   res.json({
     _id: req.host._id,
     hostName: req.host.hostName,
@@ -73,7 +73,7 @@ router.get("/profile", auth.verifyHost, (req, res, next) => {
   });
 });
 
-router.put("/updateprofile", auth.verifyHost, (req, res, next) => {
+router.put("/", auth.verifyHost, (req, res, next) => {
   Host.findByIdAndUpdate(req.host._id, { $set: req.body }, { new: true })
     .then(host => {
       res.json({

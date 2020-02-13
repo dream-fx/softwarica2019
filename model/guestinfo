@@ -15,7 +15,17 @@ const guestSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+
+  guestEmail: {
+    type: String
+  },
   guestImage: {
+    type: String
+  },
+  guestBio: {
+    type: String
+  },
+  guestGender: {
     type: String
   }
 });

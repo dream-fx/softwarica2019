@@ -33,13 +33,13 @@ mongoose
   );
 
 app.use("/guest", GuestRouter);
-app.use("/upload", Upload);
 app.use("/host", HostRouter);
 
 //app.use(auth.verifyGuest);
 //app.use(auth.verifyHost);
-app.use("/home", auth.verifyHost,HomeRouter);
+app.use("/home", auth.verifyHost, HomeRouter);
 // app.use("/booking", Booking);
+app.use("/upload", Upload);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
