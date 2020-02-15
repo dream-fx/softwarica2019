@@ -7,13 +7,13 @@ const hostSchema = new mongoose.Schema({
   },
   hostUsername: {
     type: String,
-    required: true,
+   
     unique: true,
-    minlength: 6
+    minlength: 4
   },
   hostPassword: {
     type: String,
-    required: true
+   
   },
   hostImage: {
     type: String

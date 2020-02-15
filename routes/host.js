@@ -6,7 +6,6 @@ const router = express.Router();
 const auth = require("../middleware/auth");
 
 router.post("/signup", (req, res, next) => {
-  console.log(req.body);
   let hostPassword = req.body.hostPassword;
   bcrypt.hash(hostPassword, 10, function(err, hash) {
     if (err) {
@@ -21,11 +20,9 @@ router.post("/signup", (req, res, next) => {
       hostLocation: req.body.hostLocation,
       hostBio: req.body.hostBio,
       hostGender: req.body.hostGender,
-      hostDob: req.body.hostDob,
-      hostCreatedAt: req.body.hostCreatedAt
+      hostDob: req.body.hostDob
     })
       .then(host => {
-        console.log(host);
         let token = jwt.sign({ _id: host._id }, process.env.SECRET);
         res.json({ status: "Signup success!", token: token });
       })
@@ -50,7 +47,7 @@ router.post("/login", (req, res, next) => {
               return next(err);
             }
             let token = jwt.sign({ _id: host._id }, process.env.SECRET);
-            res.json({ status: "Login success!", token: token });
+            res.json({ status: "Login successful", token: token });
           })
           .catch(next);
       }
@@ -58,18 +55,17 @@ router.post("/login", (req, res, next) => {
     .catch(next);
 });
 
-router.get("/", auth.verifyHost, (req, res, next) => {
+router.get("/", (req, res, next) => {
   res.json({
-    _id: req.host._id,
-    hostName: req.host.hostName,
-    hostUsername: req.host.hostUsername,
-    hostImage: req.host.hostImage,
-    hostEmail: req.host.hostEmail,
-    hostLocation: req.host.hostLocation,
-    hostBio: req.host.hostBio,
-    hostGender: req.host.hostGender,
-    hostDob: req.host.hostDob,
-    hostCreatedAt: req.host.hostCreatedAt
+    _id: req.hostname._id,
+    hostName: req.hostname.hostName,
+    hostUsername: req.hostname.hostUsername,
+    hostImage: req.hostname.hostImage,
+    hostEmail: req.hostname.hostEmail,
+    hostLocation: req.hostname.hostLocation,
+    hostBio: req.hostname.hostBio,
+    hostGender: req.hostname.hostGender,
+    hostDob: req.hostname.hostDob
   });
 });
 
@@ -85,8 +81,7 @@ router.put("/", auth.verifyHost, (req, res, next) => {
         hostLocation: req.host.hostLocation,
         hostBio: req.host.hostBio,
         hostGender: req.host.hostGender,
-        hostDob: req.host.hostDob,
-        hostCreatedAt: req.host.hostCreatedAt
+        hostDob: req.host.hostDob
       });
     })
     .catch(next);

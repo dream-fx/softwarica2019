@@ -10,6 +10,8 @@ router.post("/signup", (req, res, next) => {
   bcrypt.hash(guestPassword, 10, function(err, hash) {
     if (err) {
       throw new Error("Could not hash!");
+      err.status = 500;
+		return next(err);
     }
     Guest.create({
       guestName: req.body.guestName,

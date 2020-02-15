@@ -1,6 +1,7 @@
 const express = require("express");
 const Home = require("../model/home");
 const router = express.Router();
+// const auth = require("./middleware/auth");
 
 router
   .route("/")

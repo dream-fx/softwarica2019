@@ -8,6 +8,8 @@ const GuestRouter = require("./routes/guest");
 const HostRouter = require("./routes/host");
 const HomeRouter = require("./routes/home");
 const BookingRouter = require("./routes/booking");
+
+const WishlistRouter = require("./routes/wishlist");
 const auth = require("./middleware/auth");
 const Upload = require("./routes/upload");
 
@@ -34,12 +36,12 @@ mongoose
 
 app.use("/guest", GuestRouter);
 app.use("/host", HostRouter);
-
-//app.use(auth.verifyGuest);
-//app.use(auth.verifyHost);
-app.use("/home", auth.verifyHost, HomeRouter);
-// app.use("/booking", Booking);
 app.use("/upload", Upload);
+// app.use(auth.verifyGuest);
+// app.use(auth.verifyHost);
+app.use("/home", HomeRouter);
+app.use("/booking",BookingRouter);
+app.use("/wishlist",auth.verifyGuest,WishlistRouter);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

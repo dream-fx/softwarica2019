@@ -1,23 +1,18 @@
 const mongoose = require("mongoose");
 
 const bookingschema = new mongoose.Schema({
-  homeName: {
+ 
+  bookIn: {
     type: String
   },
-  bookIn: {
-    type: Date
-  },
   bookOut: {
-    type: Date
+    type: String
   },
-  bookDays: {
-    type: Number
+  bookPerson:{
+    type:String
   },
-  bookPrice: {
-    type: Number
-  },
-  bookStatus: {
-    type: Boolean
+  bookMessage:{
+    type:String
   },
   authorG: {
     type: mongoose.Schema.Types.ObjectId,
@@ -25,5 +20,5 @@ const bookingschema = new mongoose.Schema({
   }
 });
 
-const Booking = mongoose.model("Booking", bookingschema);
-module.exports = Booking;
+module.exports = mongoose.model("Booking", bookingschema);
+
