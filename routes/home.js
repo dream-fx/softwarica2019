@@ -5,7 +5,6 @@ const router = express.Router();
 
 router
   .route("/")
-
   .post((req, res, next) => {
     let home = new Home(req.body);
     home.author = req.host._id;
@@ -57,7 +56,6 @@ router
       })
       .catch(next);
   })
-
   .delete((req, res, next) => {
     Home.findOneAndDelete({ author: req.host._id, _id: req.params.id })
       .then(home => {

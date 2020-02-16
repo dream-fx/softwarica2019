@@ -55,7 +55,7 @@ router.post("/login", (req, res, next) => {
     .catch(next);
 });
 
-router.get("/", (req, res, next) => {
+router.get("/",auth.verifyHost, (req, res, next) => {
   res.json({
     _id: req.hostname._id,
     hostName: req.hostname.hostName,

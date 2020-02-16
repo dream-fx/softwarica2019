@@ -1,11 +1,12 @@
 const express = require("express");
 const Booking = require("../model/booking");
 const router = express.Router();
+const auth = require("../middleware/auth");
 
 router
   .route("/")
 
-  .post((req, res, next) => {
+  .post(auth.verifyGuest, (req, res, next) => {
     let booking = new Booking(req.body);
     booking.authorG = req.guest._id;
     console.log(booking);
@@ -28,11 +29,13 @@ router
       });
   });
 
+router
+  .route("/:id")
 
-router.route("/:id").get((req, res, next) => {
+  .get((req, res, next) => {
     Booking.findOne({ author: req.guest._id, _id: req.params.id })
       .then(booking => {
-          if (task == null) throw new Error("Booking not found!")
+        if (task == null) throw new Error("Booking not found!");
         res.json(booking);
       })
       .catch(err => {
@@ -40,10 +43,10 @@ router.route("/:id").get((req, res, next) => {
       });
   })
   .post((req, res) => {
-      res.statusCode = 405;
-      res.json({ message: "Method not allowed" });
+    res.statusCode = 405;
+    res.json({ message: "Method not allowed" });
   })
-  
+
   .put((req, res, next) => {
     console.log(req.body);
     Booking.findOneAndUpdate(

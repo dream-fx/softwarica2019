@@ -17,8 +17,10 @@ router.post("/signup", (req, res, next) => {
       guestName: req.body.guestName,
       guestUsername: req.body.guestUsername,
       guestPassword: hash,
-      guestImage: req.body.guestImage
-      // guestBio: req.body.guestBio,
+      guestImage: req.body.guestImage,
+      guestBio: req.body.guestBio,
+      guestEmail: req.body.guestEmail
+
       // guestGender: req.body.guestGender,
       // guestDob: req.body.guestDob
       // guestCreatedAt: req.body.guestCreatedAt
@@ -61,7 +63,10 @@ router.get("/", auth.verifyGuest, (req, res, next) => {
     _id: req.guest._id,
     guestName: req.guest.guestName,
     guestUsername: req.guest.guestUsername,
-    guestImage: req.guest.guestImage
+    guestImage: req.guest.guestImage,
+    guestBio: req.body.guestBio,
+    guestEmail: req.body.guestEmail,
+
   });
 });
 
@@ -72,7 +77,9 @@ router.put("/", auth.verifyGuest, (req, res, next) => {
         _id: guest._id,
         guestName: req.guest.guestName,
         guestUsername: req.guest.guestUsername,
-        guestImage: guest.guestImage,
+        guestBio: req.body.guestBio,
+        guestEmail: req.body.guestEmail,
+  
        
       });
     })

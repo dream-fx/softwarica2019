@@ -17,6 +17,12 @@ const guestSchema = new mongoose.Schema({
   },
   guestImage: {
     type: String
+  },
+  guestBio: {
+    type: String
+  },
+  guestEmail: {
+    type: String
   }
 });
 

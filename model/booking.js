@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const bookingschema = new mongoose.Schema({
  
   bookIn: {

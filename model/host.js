@@ -7,7 +7,7 @@ const hostSchema = new mongoose.Schema({
   },
   hostUsername: {
     type: String,
-   
+    required:true,
     unique: true,
     minlength: 4
   },
